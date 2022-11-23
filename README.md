@@ -97,7 +97,7 @@ v1.0 ⋮ 23-11-2022
 - [BlackCap Grabber](https://github.com/KSCHdsc/BlackCap-Grabber)
 - [Creal Stealer](https://github.com/Ayhuuu/Creal-Stealer)
 
-
+```
 ### <a id="Term"s></a>💼 〢 Term of usage
 
 - [x] Educational purpose only!
