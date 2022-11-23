@@ -72,7 +72,7 @@ Love ❌ Ice ✅
 - Steal all Chromium Passwords and Cookies for OperaGX/Opera/GoogleChrome/Brave/Chromium/Torch/Edge/Mozilla and others (💎)
 - 0/64 Detect Virus Total (.exe) (💎)
 - Grabb Sensitive Files exodus login / a2f backup codes / tokens / passwords... (can be customizable) (💎)
-
+```
 ## <a id="changelog"></a>📝 〢 ChangeLog
 
 ```diff
@@ -83,6 +83,7 @@ v1.0 ⋮ 23-11-2022
 - Made the readme.md
 - Made a simple Discord server
 - Invited some testers
+```
 
 ### Authors
 - [iceeburr](https://github.com/iceeburr)
@@ -97,7 +98,6 @@ v1.0 ⋮ 23-11-2022
 - [BlackCap Grabber](https://github.com/KSCHdsc/BlackCap-Grabber)
 - [Creal Stealer](https://github.com/Ayhuuu/Creal-Stealer)
 
-```
 ### <a id="Term"s></a>💼 〢 Term of usage
 
 - [x] Educational purpose only!
