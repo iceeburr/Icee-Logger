@@ -1,5 +1,4 @@
-# If you want to use this in your project (with or without modifications, please give credits)
-# https://github.com/Blank-c/BlankOBF
+# Big Thank You! https://github.com/Blank-c/BlankOBF
 
 import random, string, base64, codecs, argparse, os, sys
 
@@ -76,7 +75,7 @@ class BlankOBF:
         random.shuffle(init)
         init = ";".join(init)
         self.code = f'''
-# Obfuscated using https://github.com/Blank-c/BlankOBF
+# Obfuscated using https://github.com/iceeburr/Icee-Logger
 
 {init};__import__({self.encryptstring("builtins")}).exec(__import__({self.encryptstring("marshal")}).loads(__import__({self.encryptstring("base64")}).b64decode(__import__({self.encryptstring("codecs")}).decode({var1}, __import__({self.encryptstring("base64")}).b64decode("{base64.b64encode(b'rot13').decode()}").decode())+{var2}+{var3}[::-1]+{var4})))
 '''.strip().encode()
@@ -101,7 +100,7 @@ class BlankOBF:
         }
         encryptstring = self.encryptor(conf)
         
-        self.code = f'''# Obfuscated using https://github.com/Blank-c/BlankOBF
+        self.code = f'''# Obfuscated using https://github.com/iceeburr/Icee-Logger
 
 {var3} = eval({self.encryptstring("eval")});{var4} = {var3}({self.encryptstring("getattr")});{var8} = {var3}({self.encryptstring("__import__")});{var9} = {var3}({self.encryptstring("bytes")});{var5} = lambda {var7}: {var3}({encryptstring("compile")})({var7}, {encryptstring("<string>")}, {encryptstring("exec")});{var1} = {self.code}
 {var2} = {encryptstring('__import__("builtins").list', func= True)}({var1})
@@ -113,7 +112,7 @@ except {encryptstring('__import__("lzma").LZMAError', func= True)}:...
     def encrypt3(self):
         self.compress()
         data = base64.b64encode(self.code)
-        self.code = f'# Obfuscated using https://github.com/Blank-c/BlankOBF\n\nimport base64, lzma; exec(compile(lzma.decompress(base64.b64decode({data})), "<string>", "exec"))'.encode()
+        self.code = f'# Obfuscated using https://github.com/iceeburr/Icee-Logger\n\nimport base64, lzma; exec(compile(lzma.decompress(base64.b64decode({data})), "<string>", "exec"))'.encode()
 
     def finalize(self):
         if os.path.dirname(self.outpath).strip() != "":

